@@ -1,0 +1,9 @@
+[submodule "manuka-server"]
+	path = manuka-server
+	url = https://github.com/spaceraccoon/manuka-server.git
+[submodule "manuka-client"]
+	path = manuka-client
+	url = https://github.com/spaceraccoon/manuka-client.git
+[submodule "manuka-listener"]
+	path = manuka-listener
+	url = https://github.com/spaceraccoon/manuka-listener.git
