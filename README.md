@@ -1,4 +1,4 @@
-# 🍯 manuka
+# 🍯 Manuka
 A modular OSINT honeypot for blue teamers
 
 ## Development
