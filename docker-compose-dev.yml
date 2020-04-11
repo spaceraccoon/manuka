@@ -12,7 +12,7 @@ services:
       - ./manuka-client:/manuka-client
   nginx:
     ports:
-      - 8080:80
+      - 8080:8080
     volumes:
       - ./docker/nginx/nginx.dev.conf:/etc/nginx/nginx.conf:ro
   server:
