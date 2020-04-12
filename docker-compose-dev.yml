@@ -4,12 +4,13 @@ services:
     build:
       dockerfile: Dockerfile-dev
     environment:
-      - NODE_PATH=/node_modules
       - CHOKIDAR_USEPOLLING=true
+    stdin_open: true
     networks:
       - internal_routing
     volumes:
       - ./manuka-client:/manuka-client
+      - /manuka-client/node_modules
   nginx:
     ports:
       - 8080:8080

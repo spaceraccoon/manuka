@@ -8,6 +8,7 @@ services:
   #     context: ./manuka-listener
   nginx:
     image: nginx:alpine
+    restart: always
     networks:
       - internet
       - internal_routing
@@ -26,6 +27,7 @@ services:
     networks:
       - internal_routing
       - postgres
+    restart: always
     secrets:
       - postgres_password
 secrets:
