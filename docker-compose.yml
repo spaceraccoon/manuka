@@ -39,6 +39,8 @@ services:
   server:
     build:
       context: ./manuka-server
+    depends_on:
+      - postgres
     networks:
       - internal_routing
       - postgres
