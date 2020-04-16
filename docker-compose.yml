@@ -3,22 +3,37 @@ services:
   client:
     build:
       context: ./manuka-client
-  # listener:
+  # listener-linkedin:
   #   build:
   #     context: ./manuka-listener
+  #   environment:
+  #     LISTENER_TYPE: login
+  #   networks:
+  #     - internal_routing
+  #   restart: always
+  listener-login:
+    build:
+      context: ./manuka-listener
+    environment:
+      COMPANY_NAME: Fake Company
+      LISTENER_ID: 1
+      LISTENER_TYPE: login
+    networks:
+      - internal_routing
+    restart: always
   nginx:
     image: nginx:alpine
-    restart: always
     networks:
       - internet
       - internal_routing
+    restart: always
   postgres:
     image: postgres:alpine
-    restart: always
     environment:
       POSTGRES_PASSWORD_FILE: /run/secrets/postgres_password
     networks:
       - postgres
+    restart: always
     secrets:
       - postgres_password
   server:

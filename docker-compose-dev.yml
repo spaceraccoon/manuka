@@ -11,9 +11,25 @@ services:
     volumes:
       - ./manuka-client:/manuka-client
       - /manuka-client/node_modules
+  # listener-linkedin:
+  #   build:
+  #     dockerfile: Dockerfile-dev
+  #   networks:
+  #     - internet
+  #   volumes:
+  #     - ./manuka-listener:/manuka-listener
+  listener-login:
+    build:
+      dockerfile: Dockerfile-dev
+    networks:
+      - internet
+    volumes:
+      - ./manuka-listener:/manuka-listener
   nginx:
     ports:
       - 8080:8080
+      - 8081:8081
+      # - 8082:8082
     volumes:
       - ./docker/nginx/nginx.dev.conf:/etc/nginx/nginx.conf:ro
   server:
