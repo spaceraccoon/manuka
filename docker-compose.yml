@@ -15,9 +15,9 @@ services:
     build:
       context: ./manuka-listener
     environment:
-      COMPANY_NAME: Fake Company
+      COMPANY_NAME: Axcel Productions
       LISTENER_ID: 1
-      LISTENER_TYPE: login
+      LISTENER_TYPE: 1
     networks:
       - internal_routing
     restart: always
