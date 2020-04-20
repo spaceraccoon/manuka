@@ -11,7 +11,7 @@ services:
     volumes:
       - ./manuka-client:/manuka-client
       - /manuka-client/node_modules
-  listener-linkedin:
+  listener-social:
     build:
       dockerfile: Dockerfile-dev
     networks:
