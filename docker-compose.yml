@@ -13,6 +13,7 @@ services:
       MESSAGES_CACHE_FILE: messages_cache.json
       GOOGLE_CREDENTIALS_FILE: /run/secrets/google_credentials
       GOOGLE_OAUTH2_TOKEN_FILE: /run/secrets/google_oauth2_token
+      GOOGLE_TOPIC: /run/secrets/google_topic
     networks:
       - internal_routing
     volumes:
@@ -20,6 +21,7 @@ services:
     restart: always
     secrets:
       - google_credentials
+      - google_topic
   listener-login:
     build:
       context: ./manuka-listener
@@ -61,6 +63,8 @@ secrets:
     file: ./docker/secrets/postgres_password
   google_credentials:
     file: ./docker/secrets/google_credentials.json
+  google_topic:
+    file: ./docker/secrets/google_topic
 networks:
   internet:
   internal_routing:
