@@ -1,3 +1,5 @@
+.DS_Store
+
 # secrets
 docker/secrets/*
 !docker/secrets/*.example
