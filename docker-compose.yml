@@ -13,12 +13,15 @@ services:
       MESSAGES_CACHE_FILE: messages_cache.json
       GOOGLE_CREDENTIALS_FILE: /run/secrets/google_credentials
       GOOGLE_OAUTH2_TOKEN_FILE: /run/secrets/google_oauth2_token
+      GOOGLE_TOPIC: /run/secrets/google_topic
     networks:
       - internal_routing
+    volumes:
+      - ./docker/secrets/google_oauth2_token.json:/run/secrets/google_oauth2_token # need to mount as volume to save refreshed tokens
     restart: always
     secrets:
       - google_credentials
-      - google_oauth2_token
+      - google_topic
   listener-login:
     build:
       context: ./manuka-listener
@@ -60,8 +63,8 @@ secrets:
     file: ./docker/secrets/postgres_password
   google_credentials:
     file: ./docker/secrets/google_credentials.json
-  google_oauth2_token:
-    file: ./docker/secrets/google_oauth2_token.json
+  google_topic:
+    file: ./docker/secrets/google_topic
 networks:
   internet:
   internal_routing:
