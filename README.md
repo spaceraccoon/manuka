@@ -26,7 +26,7 @@ See the individual component repositories for their requirements.
 ### Configure
 
 1. Create a file in `docker/secrets/postgres_password` with the password for Postgres
-2. Setup Google PubSub on console.cloud.google.com/cloudpubsub for push email functionality (https://developers.google.com/gmail/api/guides/push).
+2. Setup Google PubSub on https://console.cloud.google.com/cloudpubsub for push email functionality (https://developers.google.com/gmail/api/guides/push).
 
 ### Run
 
