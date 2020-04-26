@@ -22,7 +22,7 @@ services:
         NGINX_USERNAME: ${NGINX_USERNAME}
         NGINX_PASSWORD: ${NGINX_PASSWORD}
       context: ./manuka-client
-    command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
+    command: '/bin/sh -c ''while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g "daemon off;"'''
     ports:
       - 80:80
       - 443:443
@@ -36,3 +36,6 @@ services:
       PGDATA: /var/lib/postgresql/data/pgdata
     volumes:
       - "./docker/postgres/data:/var/lib/postgresql/data"
+  server:
+    networks:
+      - internet # to poll pastebin API
