@@ -95,7 +95,7 @@ OSINT - Open Source Intelligence
 
 ### Acknowledgement
 
-1. [Eugene Lim] (https://www.linkedin.com/in/limzhiweieugene/)
-2. [Bernard Lim] (https://www.linkedin.com/in/bernlim93/)
-3. [Kenneth Tan] (https://www.linkedin.com/in/kennethtanyh)
-4. [Tan Kee Hock] (https://www.linkedin.com/in/tankeehock/)
+1. [Eugene Lim](https://www.linkedin.com/in/limzhiweieugene/)
+2. [Bernard Lim](https://www.linkedin.com/in/bernlim93/)
+3. [Kenneth Tan](https://www.linkedin.com/in/kennethtanyh)
+4. [Tan Kee Hock](https://www.linkedin.com/in/tankeehock/)
