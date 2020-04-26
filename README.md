@@ -102,12 +102,13 @@ See the individual component repositories for their requirements.
 
 1. Similar to the configuration for development, ensure that all secrets and Google Cloud settings are in place. Note that the subscription URL should now be at `http://DOMAIN/notifications`.
 2. Point your domain name to your server IP.
-3. If necessary, modify `docker/nginx/nginx.prod.conf` to meet your routing needs.
+3. Copy `docker/nginx/nginx.prod.conf.example` to `docker/nginx/nginx.prod.conf` and replace `examplecompany.com` with your production domain.
+4. Run `init-letsencrypt.sh` to generate your SSL certificates.
 
 ### Run
 
-1. `NGINX_USERNAME=admin NGINX_PASSWORD=admin COMPANY_NAME='Fake Company' docker-compose -f docker-compose.yml -f docker-compose-prod.yml up --build --remove-orphans`
-   1. Modify `NGINX_USERNAME` and `NGINX_PASSWORD`; this will be your dashboard basic authentication.
+1. `COMPANY_NAME='Next Clarity Financial' NGINX_USERNAME=username NGINX_PASSWORD=password docker-compose -f docker-compose.yml -f docker-compose-prod.yml up --build --remove-orphans -d`
+   1. `NGINX_USERNAME` and `NGINX_PASSWORD` will be your dashboard basic authentication.
    2. `COMPANY_NAME` will be the fake login page company name.
 
 ### Currently Supported Listeners
