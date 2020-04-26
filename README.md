@@ -1,7 +1,52 @@
 # 🍯 Manuka
-A modular OSINT honeypot for blue teamers
+A modular, scalable OSINT honeypot targeting pre-attack reconnaissance techniques.
+
+## Description/Abstract
+
+Manuka is an Open-source intelligence (OSINT)  honeypot that monitors reconnaissance attempts by threat actors and generates actionable intelligence for Blue Teamers. It creates a simulated environment consisting of staged OSINT sources, such as social media profiles and leaked credentials, and tracks signs of adversary interest, closely aligning to MITRE’s PRE-ATT&CK framework. Manuka gives Blue Teams additional visibility of the pre-attack reconnaissance phase and generates early-warning signals for defenders.
+
+Although they vary in scale and sophistication, most traditional honeypots focus on networks. These honeypots uncover attackers  at Stage 2 (Weaponization) to 7 (Actions on Objectives) of the cyber kill chain, with the assumption that attackers are already probing the network. 
+
+Manuka conducts OSINT threat detection at Stage 1 (Reconnaissance) of the cyber kill chain. Despite investing millions of dollars into network defenses, organisations can be easily compromised through a single Google search.	 One recent example is hackers exposing corporate meetings, therapy sessions, and college classes through Zoom calls left on the open Web. Enterprises need to detect these OSINT threats on their perimeter but lack the tools to do so.
+
+Manuka is built to scale. Users can easily add new listener modules and plug them into the Dockerized environment. They can coordinate multiple campaigns and honeypots simultaneously to broaden the honeypot surface. Furthermore, users can quickly customize and deploy Manuka to match different use cases. Manuka’s data is designed to be easily ported to other third-party analysis and visualization tools in an organisation’s workflow.
+
+Designing an OSINT honeypot presents a novel challenge due to the complexity and wide range of OSINT techniques. However, such a tool would allow Blue Teamers to “shift left” in their cyber threat intelligence strategy.
+
+## Category
+
+OSINT - Open Source Intelligence
+
+## Tool Design
+
+---
+
+### Architecture
+
+Manuka is built on the following key terms and processes.
+
+![Manuka Architecture](docs/images/manuka_architecture.jpg "Architecture")
+
+* Sources: Possible OSINT vectors such as social media profiles, exposed credentials, and leaked source code.
+* Listeners: Servers that monitor sources for interactions with attackers.
+* Hits: Indicators of interest such as attempted logins with leaked credentials and connections on social media.
+* Honeypots: Groups of sources and listeners that are organized into a single Campaign which analyzes and tracks hits over time.
+
+### System Design
+
+![Manuka System](docs/images/manuka_system.jpg "System")
+
+The framework itself consists of several Docker containers which can be deployed on a single host.
+
+* manuka-server: Central Golang server that performs CRUD operations and ingests hits from listeners.
+* manuka-listener: Modular Golang server that can perform different listener roles.
+* manuka-client: React dashboard for Blue Team to manage Manuka’s resources.
+
+These containers are orchestrated through a single docker-compose command.
 
 ## Development
+
+---
 
 In development, the components run on the following ports in their respective containers:
 
@@ -39,3 +84,24 @@ See the individual component repositories for their requirements.
     1. Initialize ngok `./ngok http <manuka-listener port>` and take note of the https URL.
     2. On Google PubSub dashboard left-hand menu, go to *Subscriptions* -> *\<subscription name\>* -> *Edit Subscription* and change the Endpoint URL to *\<ngok https URL\>/notifications*.
     3. Try sending an email from another account to the target Gmail account. You should see `POST /notifications    200 OK` on the `ngrok` console, and `Received push notification` on the Docker console.
+
+### Currently Supported Listeners
+
+1. Social Listener
+
+    Monitors for social activities on Facebook and LinkedIn. Currently supports notification of network connection attempts. Note that the monitored social media account(s) should have email notification enabled. The corresponding email account(s) receiving the email notifications from the social media platforms should be configured to forward these emails to the centralised gmail account.
+
+2. Login Listener
+
+   Monitors for attempted login using leaked credentials on the honeypot site.
+
+## Others
+
+---
+
+### Acknowledgement
+
+1. [Eugene Lim] (https://www.linkedin.com/in/limzhiweieugene/)
+2. [Bernard Lim] (https://www.linkedin.com/in/bernlim93/)
+3. [Kenneth Tan] (https://www.linkedin.com/in/kennethtanyh)
+4. [Tan Kee Hock] (https://www.linkedin.com/in/tankeehock/)
