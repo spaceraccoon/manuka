@@ -13,13 +13,7 @@ Manuka is built to scale. Users can easily add new listener modules and plug the
 
 Designing an OSINT honeypot presents a novel challenge due to the complexity and wide range of OSINT techniques. However, such a tool would allow Blue Teamers to “shift left” in their cyber threat intelligence strategy.
 
-## Category
-
-OSINT - Open Source Intelligence
-
 ## Tool Design
-
----
 
 ### Architecture
 
@@ -45,8 +39,6 @@ The framework itself consists of several Docker containers which can be deployed
 These containers are orchestrated through a single docker-compose command.
 
 ## Development
-
----
 
 In development, the components run on the following ports in their respective containers:
 
@@ -97,7 +89,9 @@ See the individual component repositories for their requirements.
 
 ## Others
 
----
+### Category
+
+OSINT - Open Source Intelligence
 
 ### Acknowledgement
 
