@@ -23,6 +23,11 @@ services:
       - 8080:8080
     volumes:
       - ./docker/nginx/nginx.prod.conf:/etc/nginx/nginx.conf:ro
+  postgres:
+    environment:
+      PGDATA: /var/lib/postgresql/data/pgdata
+    volumes:
+      - "./docker/postgres/data:/var/lib/postgresql/data"
   server:
     volumes:
       - ./manuka-server:/manuka-server
