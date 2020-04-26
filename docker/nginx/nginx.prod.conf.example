@@ -1,0 +1,70 @@
+worker_processes  1;
+
+events {
+    worker_connections  1024;
+}
+
+http {
+    include       mime.types;
+    default_type  application/octet-stream;
+
+    keepalive_timeout  65;
+
+    gzip  on;
+
+    server {
+        listen 8080;
+
+        location / {
+            auth_basic "Restricted";
+            auth_basic_user_file /etc/nginx/.htpasswd;
+            root /var/www/html;
+            index index.html;
+            try_files $uri /index.html =404;
+        }
+
+        location /api/ {
+            auth_basic "Restricted";
+            auth_basic_user_file /etc/nginx/.htpasswd;
+            proxy_pass http://server:8080/;
+            proxy_set_header Host $host;
+            proxy_set_header Authorization "";
+        }
+    }
+
+    server {
+	listen 80;
+	server_name examplecompany.com;
+
+	location / {
+            return 301 https://$host$request_uri;
+    	}   
+
+	location /.well-known/acme-challenge/ {
+    	    root /var/www/certbot;
+	}
+    }
+ 
+    server {
+	listen 443 ssl;
+	server_name examplecompany.com;
+
+	ssl_certificate /etc/letsencrypt/live/examplecompany.com/fullchain.pem;
+	ssl_certificate_key /etc/letsencrypt/live/examplecompany.com/privkey.pem;
+	include /etc/letsencrypt/options-ssl-nginx.conf;
+	ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
+
+        location / {
+            proxy_pass http://listener-login:8080/;
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        }
+
+        location /notifications {
+            proxy_pass http://listener-social:8080;
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+        }
+    }
+}

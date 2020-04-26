@@ -3,3 +3,9 @@
 # secrets
 docker/secrets/*
 !docker/secrets/*.example
+
+# nginx config
+docker/nginx/nginx.prod.conf
+
+# ssl certs
+docker/certbot/*

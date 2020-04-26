@@ -1,5 +1,11 @@
 version: "3.7"
 services:
+  certbot:
+    image: certbot/certbot
+    volumes:
+      - ./docker/certbot/conf:/etc/letsencrypt
+      - ./docker/certbot/www:/var/www/certbot
+    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
   listener-social:
     build:
       dockerfile: Dockerfile
@@ -16,11 +22,15 @@ services:
         NGINX_USERNAME: ${NGINX_USERNAME}
         NGINX_PASSWORD: ${NGINX_PASSWORD}
       context: ./manuka-client
+    command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
     ports:
       - 80:80
+      - 443:443
       - 8080:8080
     volumes:
       - ./docker/nginx/nginx.prod.conf:/etc/nginx/nginx.conf:ro
+      - ./docker/certbot/conf:/etc/letsencrypt
+      - ./docker/certbot/www:/var/www/certbot
   postgres:
     environment:
       PGDATA: /var/lib/postgresql/data/pgdata
