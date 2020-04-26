@@ -2,6 +2,7 @@ version: "3.7"
 services:
   client:
     build:
+      context: ./manuka-client
       dockerfile: Dockerfile-dev
     environment:
       - CHOKIDAR_USEPOLLING=true
@@ -26,6 +27,7 @@ services:
     volumes:
       - ./manuka-listener:/manuka-listener
   nginx:
+    image: nginx:alpine
     ports:
       - 8080:8080
       - 8081:8081

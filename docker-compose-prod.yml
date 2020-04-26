@@ -1,0 +1,28 @@
+version: "3.7"
+services:
+  listener-social:
+    build:
+      dockerfile: Dockerfile
+    networks:
+      - internet # to poll google cloud
+    volumes:
+      - ./manuka-listener:/manuka-listener
+  listener-login:
+    build:
+      dockerfile: Dockerfile
+    volumes:
+      - ./manuka-listener:/manuka-listener
+  nginx:
+    build:
+      args:
+        NGINX_USERNAME: ${NGINX_USERNAME}
+        NGINX_PASSWORD: ${NGINX_PASSWORD}
+      context: ./manuka-client
+    ports:
+      - 80:80
+      - 8080:8080
+    volumes:
+      - ./docker/nginx/nginx.prod.conf:/etc/nginx/nginx.conf:ro
+  server:
+    volumes:
+      - ./manuka-server:/manuka-server

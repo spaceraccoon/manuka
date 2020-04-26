@@ -1,8 +1,5 @@
 version: "3.7"
 services:
-  client:
-    build:
-      context: ./manuka-client
   listener-social:
     build:
       context: ./manuka-listener
@@ -33,7 +30,6 @@ services:
       - internal_routing
     restart: always
   nginx:
-    image: nginx:alpine
     networks:
       - internet
       - internal_routing
