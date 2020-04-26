@@ -23,7 +23,6 @@ services:
     build:
       context: ./manuka-listener
     environment:
-      COMPANY_NAME: Axcel Productions
       LISTENER_ID: 1
       LISTENER_TYPE: 1
     networks:

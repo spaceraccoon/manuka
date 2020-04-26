@@ -106,7 +106,9 @@ See the individual component repositories for their requirements.
 
 ### Run
 
-1. `NGINX_USERNAME=admin NGINX_PASSWORD=admin docker-compose -f docker-compose.yml -f docker-compose-prod.yml up --build --remove-orphans` Modify `NGINX_USERNAME` and `NGINX_PASSWORD`; this will be your dashboard basic authentication.
+1. `NGINX_USERNAME=admin NGINX_PASSWORD=admin COMPANY_NAME='Fake Company' docker-compose -f docker-compose.yml -f docker-compose-prod.yml up --build --remove-orphans`
+   1. Modify `NGINX_USERNAME` and `NGINX_PASSWORD`; this will be your dashboard basic authentication.
+   2. `COMPANY_NAME` will be the fake login page company name.
 
 ### Currently Supported Listeners
 

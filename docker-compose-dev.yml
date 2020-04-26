@@ -22,6 +22,8 @@ services:
   listener-login:
     build:
       dockerfile: Dockerfile-dev
+    environment:
+      COMPANY_NAME: Fake Company
     networks:
       - internet
     volumes:

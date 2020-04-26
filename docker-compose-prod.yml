@@ -8,6 +8,8 @@ services:
   listener-login:
     build:
       dockerfile: Dockerfile
+    environment:
+      COMPANY_NAME: ${COMPANY_NAME}
   nginx:
     build:
       args:
