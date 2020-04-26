@@ -5,13 +5,9 @@ services:
       dockerfile: Dockerfile
     networks:
       - internet # to poll google cloud
-    volumes:
-      - ./manuka-listener:/manuka-listener
   listener-login:
     build:
       dockerfile: Dockerfile
-    volumes:
-      - ./manuka-listener:/manuka-listener
   nginx:
     build:
       args:
@@ -28,6 +24,3 @@ services:
       PGDATA: /var/lib/postgresql/data/pgdata
     volumes:
       - "./docker/postgres/data:/var/lib/postgresql/data"
-  server:
-    volumes:
-      - ./manuka-server:/manuka-server
