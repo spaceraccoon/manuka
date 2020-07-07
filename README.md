@@ -1,8 +1,6 @@
-# 🍯 Manuka
+# Manuka
 
-A modular, scalable OSINT honeypot targeting pre-attack reconnaissance techniques.
-
-![Manuka](docs/images/manuka.png "Manuka")
+![Manuka](docs/images/icons/manuka_full_icon.png "Manuka")
 
 ## Description
 
@@ -15,6 +13,10 @@ Manuka conducts OSINT threat detection at Stage 1 (Reconnaissance) of the cyber 
 Manuka is built to scale. Users can easily add new listener modules and plug them into the Dockerized environment. They can coordinate multiple campaigns and honeypots simultaneously to broaden the honeypot surface. Furthermore, users can quickly customize and deploy Manuka to match different use cases. Manuka’s data is designed to be easily ported to other third-party analysis and visualization tools in an organisation’s workflow.
 
 Designing an OSINT honeypot presents a novel challenge due to the complexity and wide range of OSINT techniques. However, such a tool would allow Blue Teamers to “shift left” in their cyber threat intelligence strategy.
+
+## Dashboard
+
+![Manuka](docs/images/manuka.png "Manuka")
 
 ## Tool Design
 
