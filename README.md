@@ -8,7 +8,7 @@ Manuka is an Open-source intelligence (OSINT) honeypot that monitors reconnaissa
 
 Although they vary in scale and sophistication, most traditional honeypots focus on networks. These honeypots uncover attackers at Stage 2 (Weaponization) to 7 (Actions on Objectives) of the cyber kill chain, with the assumption that attackers are already probing the network.
 
-![Manuka](docs/images/icons/recon_cyber_kill_chain.png "Recon Phase of Cyber Kill Chain")
+![Manuka](docs/images/recon_cyber_kill_chain.png "Recon Phase of Cyber Kill Chain")
 
 Manuka conducts OSINT threat detection at Stage 1 (Reconnaissance) of the cyber kill chain. Despite investing millions of dollars into network defenses, organisations can be easily compromised through a single Google search. One recent example is hackers exposing corporate meetings, therapy sessions, and college classes through Zoom calls left on the open Web. Enterprises need to detect these OSINT threats on their perimeter but lack the tools to do so.
 
