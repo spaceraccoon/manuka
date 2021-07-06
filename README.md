@@ -1,5 +1,5 @@
 # Manuka
-[![Black Hat Arsenal](https://raw.githubusercontent.com/spaceraccoon/npm-scan/master/docs/images/bhusa2020.svg?sanitize=true)]()
+[![Black Hat Arsenal](https://github.com/spaceraccoon/manuka/blob/master/docs/images/bhusa2020.svg?sanitize=true)]()
 ![Manuka](docs/images/icons/manuka_full_icon.png "Manuka")
 
 ## Description
