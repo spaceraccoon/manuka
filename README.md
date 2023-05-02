@@ -66,7 +66,7 @@ See the individual component repositories for their requirements.
 
 1. `docker >= 19.03.8`
 2. `docker-compose >= 1.25.4`
-3. `ngok >= 2.3.35`
+3. `ngrok >= 2.3.35`
 
 ### Configure
 
